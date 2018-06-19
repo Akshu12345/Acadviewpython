@@ -30,8 +30,8 @@ print((t2>=t1))
 print((t2<=t1))
 
 
-#Q3:-
 
+#Q3:-
 print('Intersection of two sets is:',t1&t2)
 
 #Q1:-
