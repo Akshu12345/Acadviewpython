@@ -51,17 +51,19 @@ def loc_of_tweets():
 
 #to analyse the top usage of the tweet
 def Top_used_words():
-    nltk.download('stopwords')
-    text='my name is Akshita sharma and i am a student of btech cse and i am happy'
-    stop_words = set(stopwords.words('english'))
-    print(stop_words)
-    list1=text.split()
-    print(list1)
-    for word in list1:
-        if word not in stop_words:
-            print(word)
-    count = Counter(list1).most_common(3)
-    print("Top Used Words:- ",count)
+    words = []
+    user = api.get_user('vivek_shivam007')
+    tweets = api.user_timeline(screen_name='ippatel', count=10, include_rts=True)
+    for tweet in tweets:
+        nltk.download('stopwords')
+        text = tweet.text
+        stop_words = set(stopwords.words('english'))
+        list1 = text.split()
+        for word in list1:
+            if word not in stop_words:
+                words.append(word)
+        count = Counter(words).most_common(3)
+        print("Top Used Words:- ",count)
 
 
 #sentiment analyses
